@@ -48,7 +48,7 @@
     "babel-preset-react": "^6.22.0",
     "browser-sync": "~2.14.0",
     "chai": "^3.5.0",
-    "eslint": "^2.9.0",
+    "eslint": "^2.13.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.12.0",
     "eslint-plugin-jsx-a11y": "^1.2.0",
