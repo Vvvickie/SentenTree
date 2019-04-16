@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head><meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding"></head>
+<body>
+<div id="vis"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js"></script>
+<script src="../dist/sententree-standalone.min.js"></script>
+<script>
+    d3.tsv("./data/comparision.tsv", function(error, rawdata) {
+        //  const data = rawdata.map(d => Object.assign({}, d, { count: +d.count }));
+        //     data.forEach(d => {
+        //         d.count = + d.count;
+        // })
+        //     const model = new SentenTree.SentenTreeBuilder()
+        //        // .tokenize(tokenizer.tokenizeBySpace)
+        //       // .transformToken(token => (/score(d|s)?/.test(token) ? 'score' : token))
+        //         .buildModel(data);
+        // const data = rawdata.map(d => Object.assign({}, d, { count: +d.count }));
+        // console.time('Build model');
+        // const model = new SentenTree.SentenTreeBuilder()
+        // // enforce tokenize by space
+        //   .tokenize(SentenTree.tokenizer.tokenizeBySpace)
+        //   .transformToken(token => (/score(d|s)?/.test(token) ? 'score' : token))
+        //   // you can adjust the maxSupportRatio (0-1)
+        //   // higher maxsupport will tend to group the graph together in one piece
+        //   // lower maxsupport will break it into multiple graphs
+        //   .buildModel(data, { maxSupportRatio: 1 });
+        // console.timeEnd('Build model');
+        const data = rawdata.map(d => Object.assign({}, d, { count: +d.count }));
+        console.time('Build model');
+        const model = new SentenTree.SentenTreeBuilder()
+        // enforce tokenize by space
+            .tokenize(SentenTree.tokenizer.tokenizeBySpace)
+            .transformToken(token => (/score(d|s)?/.test(token) ? 'score' : token))
+            // you can adjust the maxSupportRatio (0-1)
+            // higher maxsupport will tend to group the graph together in one piece
+            // lower maxsupport will break it into multiple graphs
+            .buildModel(data, { maxSupportRatio: 1 });
+        console.timeEnd('Build model');
+        new SentenTree.SentenTreeVis('#vis')
+            .data(model.getRenderedGraphs(5))
+            .on('nodeClick', node => {
+                console.log('node', node);
+            });
+    });
+</script>
+</body>
+</html>
