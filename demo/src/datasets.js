@@ -7,7 +7,6 @@ export const DATASETS = [
   {
     name: '中国足球',
     file: 'data.tsv',
-    terms: {'world':2, 'cup':2, 'brazil':1}
   },
   {
     name: '詹姆斯',
@@ -16,6 +15,10 @@ export const DATASETS = [
   {
     name: '996工作制',
     file: '996.tsv',
+  },
+  {
+    name: '战狼',
+    file: 'wolf.tsv',
   },
   // {
   //   file: 'goal1.tsv',
