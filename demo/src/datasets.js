@@ -1,9 +1,25 @@
 export const DATASETS = [
+  // {
+  //   name: 'First goal of World Cup 2014',
+  //   file: 'goal.tsv',
+  //   terms: {'world':2, 'cup':2, 'brazil':1}
+  // },
   {
-    name: 'First goal of World Cup 2014',
-    file: 'goal.tsv',
-    terms: {'world':2, 'cup':2, 'brazil':1}
+    name: '绿皮书',
+    file: 'greenbook.tsv',
   },
+  {
+    name: '绿皮书-b',
+    file: 'greenbook_b.tsv',
+  },
+  {
+    name: '你的名字',
+    file: 'douban.tsv',
+  },
+  // {
+  //   name: '绿皮书',
+  //   file: 'greenbook.tsv',
+  // },
   {
     name: '中国足球',
     file: 'data.tsv',
@@ -40,10 +56,7 @@ export const DATASETS = [
   //   name: 'Sochi Dogs (Winter Olympics)',
   //   file: 'sochidogs.tsv',
   // },
-  {
-    name: '你的名字',
-    file: 'douban.tsv',
-  }
+
   // {
   //   name: 'Robin Williams',
   //   file: 'robin_williams.json',

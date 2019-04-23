@@ -56,6 +56,7 @@ class App extends React.Component {
   loadFile(file) {
     DataService.loadFile(`data/${file}`, (error, data) => {
       console.time('Build model');
+      console.log(data)
       const model = new SentenTreeBuilder()
       // enforce tokenize by space
           .tokenize(tokenizer.tokenizeBySpace)
@@ -63,7 +64,7 @@ class App extends React.Component {
         .buildModel(data);
       console.timeEnd('Build model');
       console.time('Build rendered graphs');
-      const renderedGraphs = model.getRenderedGraphs(3);
+      const renderedGraphs = model.getRenderedGraphs(5);
       console.timeEnd('Build rendered graphs');
 
       this.setState({

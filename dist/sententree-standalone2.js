@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["SentenTree"] = factory();
+		exports["SentenTree2"] = factory();
 	else
-		root["SentenTree"] = factory();
+		root["SentenTree2"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -28024,7 +28024,7 @@ var SentenTreeVis = function (_SvgChart) {
       this.sLinks = this.layers.get('link').selectAll('path.link').style('stroke-width', function (d) {
         return d.strokeWidth + 'px';
       }).style('stroke', function (l) {
-        return l.isTheOnlyBridge() ? '#777' : '#F93A3A';
+        return l.isTheOnlyBridge() ? '#777' : '#7b9fc9';
       });
     }
   }, {

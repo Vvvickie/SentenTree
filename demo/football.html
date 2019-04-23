@@ -4,11 +4,12 @@
     <meta content="utf-8" http-equiv="encoding"></head>
 <body>
 <div id="vis"></div>
+<div id="vis2"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js"></script>
-<script src="../dist/sententree-standalone.min.js"></script>
+<script src="../dist/sententree-standalone.js"></script>
 <script>
-    d3.tsv("./data/douban.tsv", function(error, rawdata) {
+    d3.tsv("./data/greenbook.tsv", function(error, rawdata) {
         //  const data = rawdata.map(d => Object.assign({}, d, { count: +d.count }));
         //     data.forEach(d => {
         //         d.count = + d.count;
@@ -28,7 +29,6 @@
         //   // lower maxsupport will break it into multiple graphs
         //   .buildModel(data, { maxSupportRatio: 1 });
         // console.timeEnd('Build model')
-        console.log(rawdata)
         const data = rawdata.map(d => Object.assign({}, d, { count: +d.count }));
         console.time('Build model');
         const model = new SentenTree.SentenTreeBuilder()
@@ -46,6 +46,52 @@
                 console.log('node', node);
             });
     });
+    // d3.tsv("./data/greenbook_b.tsv", function(error, rawdata) {
+    //     const data = rawdata.map(d => Object.assign({}, d, { count: +d.count }));
+    //     console.time('Build model');
+    //     const model = new SentenTree.SentenTreeBuilder()
+    //         .tokenize(SentenTree.tokenizer.tokenizeBySpace)
+    //         .transformToken(token => (/score(d|s)?/.test(token) ? 'score' : token))
+    //         .buildModel(data, { maxSupportRatio: 1 });
+    //     console.timeEnd('Build model');
+    //     new SentenTree.SentenTreeVis('#vis2')
+    //         .data(model.getRenderedGraphs(3))
+    //         .on('nodeClick', node => {
+    //             console.log('node', node);
+    //         });
+    // });
 </script>
+<script src="../dist/sententree-standalone2.js"></script>
+<script>
+    d3.tsv("./data/greenbook_b.tsv", function(error, rawdata) {
+        const data = rawdata.map(d => Object.assign({}, d, { count: +d.count }));
+        console.time('Build model');
+        const model = new SentenTree.SentenTreeBuilder()
+            .tokenize(SentenTree.tokenizer.tokenizeBySpace)
+            .transformToken(token => (/score(d|s)?/.test(token) ? 'score' : token))
+            .buildModel(data, { maxSupportRatio: 1 });
+        console.timeEnd('Build model');
+        new SentenTree2.SentenTreeVis('#vis2')
+            .data(model.getRenderedGraphs(3))
+            .on('nodeClick', node => {
+                console.log('node', node);
+            });
+    });
+</script>
+<style>
+    #vis {
+        padding-top: 30px;
+        padding-bottom: 40px;
+        text-align: center;
+        transform: scale(1.2,1.2);
+    }
+    #vis2 {
+        text-align: center;
+        transform: scale(0.8,0.8);
+    }
+    .node {
+        color: #29B6F6;
+    }
+</style>
 </body>
 </html>

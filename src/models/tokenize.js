@@ -12,7 +12,6 @@ export function tokenize(text) {
 }
 
 export function tokenizeBySpace(text) {
-  console.log(text)
   return text
     .split(' ')
     .filter(x => x.length > 0);
