@@ -6,11 +6,11 @@ export const DATASETS = [
   // },
   {
     name: '绿皮书',
-    file: 'greenbook.tsv',
+    file: 'greenbook_b.tsv',
   },
   {
     name: '绿皮书-b',
-    file: 'greenbook_b.tsv',
+    file: 'greenbook.tsv',
   },
   {
     name: '你的名字',

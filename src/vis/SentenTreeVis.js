@@ -130,7 +130,7 @@ class SentenTreeVis extends SvgChart {
 
     this.sLinks = this.layers.get('link').selectAll('path.link')
       .style('stroke-width', d => `${d.strokeWidth}px`)
-      .style('stroke', l => (l.isTheOnlyBridge() ? '#777' : '#F93A3A'));
+      .style('stroke', l => (l.isTheOnlyBridge() ? '#777' : '#2BB3D5'));
   }
 
   updatePosition() {
